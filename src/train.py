@@ -14,8 +14,8 @@ def main():
     '''
     arg1 = sys.argv[1] # Target file and directory
     print("Loading data...")
-    be_type = arg1.split('/')[1].upper()
-    sample =  arg1.split('/')[2][:-3].upper() # Number of sample replicate (e.g. 156B for ABEmax 1st replicate)
+    be_type = arg1.split('/')[-2].upper()
+    sample =  arg1.split('/')[-1][:-3].upper() # Number of sample replicate (e.g. 156B for ABEmax 1st replicate)
     num_epochs = 0
     if len(sys.argv)<3:
         num_epochs = 4
