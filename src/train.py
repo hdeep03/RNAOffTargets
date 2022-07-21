@@ -18,7 +18,7 @@ def main():
     sample =  arg1.split('/')[-1][:-3].upper() # Number of sample replicate (e.g. 156B for ABEmax 1st replicate)
     num_epochs = 0
     if len(sys.argv)<3:
-        num_epochs = 4
+        num_epochs = 2
     else:
         num_epochs = int(sys.argv[2])
     
@@ -55,11 +55,11 @@ def main():
     #create model
     model = Sequential()
     #add model layers
-    model.add(Conv1D(32, kernel_size=7, activation='relu', input_shape=(101,4)))
+    model.add(Conv1D(64, kernel_size=15, activation='relu', input_shape=(101,4)))
     model.add(BatchNormalization())
-    model.add(Conv1D(32, kernel_size=7, activation='relu'))
+    model.add(Conv1D(64, kernel_size=15, activation='relu'))
     model.add(BatchNormalization())
-    model.add(Conv1D(16, kernel_size=7, activation='relu'))
+    model.add(Conv1D(32, kernel_size=15, activation='relu'))
     model.add(BatchNormalization())
     model.add(Flatten())
     model.add(Dense(16, activation = 'relu'))
@@ -71,7 +71,7 @@ def main():
     print(model.summary())
     
     print('Training model...')
-    history = model.fit(traingen, validation_data=testgen, workers=40, use_multiprocessing=True, epochs=num_epochs, verbose=2)
+    history = model.fit(traingen, validation_data=testgen, workers=40, use_multiprocessing=True, epochs=num_epochs)
     print('Model trained!')
     
     model.save(sys.argv[1])

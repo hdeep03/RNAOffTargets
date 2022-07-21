@@ -81,6 +81,7 @@ def main():
     
     with open(arg1, 'wb') as f:
         np.save(f, reg.coef_)
+        np.save(f, reg.intercept_)
 
 if __name__ == '__main__':
     main()

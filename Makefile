@@ -14,7 +14,7 @@ regminiABEmax: models/regression/ABE/243C.npy models/regression/ABE/244C.npy
 
 regBE3: models/regression/CBE/89B.npy models/regression/CBE/90B.npy
 
-regA3A: models/regression/CBE/160F.npy models/regression/CBE/161F.npy
+regA3A: models/regression/CBE/160F.npy models/regression/CBE/161F.npy 
 
 models/regression/ABE/%.npy:
 	python src/regression.py $@
