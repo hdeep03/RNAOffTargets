@@ -11,14 +11,14 @@ import gzip
 
 class RNASeqDataGenerator(keras.utils.Sequence):
     
-    def __init__(self, seqs, er, batch_size=64, logits=True):
+    def __init__(self, seqs, er, batch_size=256, logits=False):
         self.sequences = seqs
         self.elements = len(seqs)
         self.batch_size = batch_size
         self.edit_rates = er
         self.log_edit = logits
         self.indexes = np.arange(len(self.sequences))
-        self.encoder = OneHotEncoder(101, {'A':0, 'C':1, 'G':2, 'T':3})
+        self.encoder = OneHotEncoder(len(seqs[0]), {'A':0, 'C':1, 'G':2, 'T':3})
         
     def __len__(self):
         return self.elements // self.batch_size
